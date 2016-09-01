@@ -148,6 +148,7 @@ class ShInputEmail extends React.Component {
             type,
             classNames,
             label,
+            required,
             validator,
             ...other
         } = this.props;
