@@ -40,9 +40,11 @@ class ShInputEmail extends React.Component {
     }
 
     componentWillReceiveProps(props) {
-        this.setState({
-            value: props.value
-        }, this.validateAll);
+        if (!_.isEqual(props.value, this.state.value)) {
+            this.setState({
+                value: props.value
+            }, this.validateAll);
+        }
     }
 
     componentWillUnmount() {
