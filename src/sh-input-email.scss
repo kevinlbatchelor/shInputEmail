@@ -37,6 +37,24 @@
         @include ellipsis;
     }
 
+    .required-label {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+
+        font-size: $size-font-small;
+        color: $color-line4;
+        text-transform: uppercase;
+        z-index: 1;
+        opacity: 0;
+
+        transition: opacity $transition;
+
+        &.display {
+            opacity: 1;
+        }
+    }
+
     input {
         position: absolute;
         top: 0;
