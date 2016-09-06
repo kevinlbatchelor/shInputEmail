@@ -17,7 +17,7 @@ class ShInputEmail extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: props.value,
+            value: props.value || '',
             statusValid: false,
             statusTouched: false,
             placeholder: getPlaceholder(props.required)
@@ -40,7 +40,7 @@ class ShInputEmail extends React.Component {
     }
 
     componentWillReceiveProps(props) {
-        if (!_.isEqual(props.value, this.state.value)) {
+        if (!_.isUndefined(props.value) && !_.isEqual(props.value, this.state.value)) {
             this.setState({
                 value: props.value
             }, this.validateAll);
@@ -195,7 +195,6 @@ ShInputEmail.propTypes = {
 
 ShInputEmail.defaultProps = {
     label: '',
-    value: '',
     onChange: null,
     required: false,
     validator: null,
