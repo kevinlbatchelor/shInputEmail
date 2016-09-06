@@ -46,7 +46,7 @@ class App extends React.Component {
                     <ShInputEmail label="Input 1" value={this.state.value1} onChange={this.handleChange1} />
                 </div>
                 <div style={{width: '300px'}}>
-                    <ShInputEmail label="Input 2" value={this.state.value2} onChange={this.handleChange2} required />
+                    <ShInputEmail label="Input 2" onChange={this.handleChange2} required />
                 </div>
             </div>
         );

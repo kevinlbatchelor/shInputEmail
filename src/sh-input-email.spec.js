@@ -18,6 +18,19 @@ describe('ShInputEmail', function() {
         ReactDOM.unmountComponentAtNode(rootNode.parentNode);
     });
 
+    it('handles minimal props', function() {
+        let root = TestUtils.renderIntoDocument(<ShInputEmail />);
+        let rootNode = ReactDOM.findDOMNode(root);
+        let input = rootNode.getElementsByTagName('input')[0];
+
+        expect(root).not.toBeNull();
+        expect(root.state.value).toBe('');
+
+        root.componentWillReceiveProps({});
+        expect(root.state.value).toBe('');
+
+    });
+
     it('set proper placeholder non-required', function() {
         let value = '';
         let root = TestUtils.renderIntoDocument(<ShInputEmail label="test1" value={value} />);
