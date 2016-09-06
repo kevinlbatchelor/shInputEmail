@@ -25,13 +25,22 @@ describe('ShInputEmail', function() {
 
         expect(root).not.toBeNull();
         expect(root.state.value).toBe('');
+        expect(rootNode.getElementsByClassName('required-label').length).toBe(0);
 
         root.componentWillReceiveProps({});
         expect(root.state.value).toBe('');
 
     });
 
-    it('set proper placeholder non-required', function() {
+    it('sets proper required flag', function() {
+        let root = TestUtils.renderIntoDocument(<ShInputEmail required />);
+        let rootNode = ReactDOM.findDOMNode(root);
+
+        expect(rootNode.getElementsByClassName('required-label').length).toBe(1);
+        expect(rootNode.getElementsByClassName('display').length).toBe(1);
+    });
+
+    it('sets proper placeholder', function() {
         let value = '';
         let root = TestUtils.renderIntoDocument(<ShInputEmail label="test1" value={value} />);
         let rootNode = ReactDOM.findDOMNode(root);
@@ -80,21 +89,6 @@ describe('ShInputEmail', function() {
         expect(rootNode.classList).not.toContain('sh-invalid');
         expect(rootNode.classList).toContain('sh-touched');
         expect(rootNode.classList).not.toContain('sh-untouched');
-    });
-
-    it('set proper placeholder required', function() {
-        let value = '';
-        let root = TestUtils.renderIntoDocument(<ShInputEmail label="test1" value={value} required />);
-        let rootNode = ReactDOM.findDOMNode(root);
-        let input = rootNode.getElementsByTagName('input')[0];
-
-        expect(input.getAttribute('placeholder')).toContain('Required');
-
-        TestUtils.Simulate.focus(input);
-        expect(input.getAttribute('placeholder')).toBe('');
-
-        TestUtils.Simulate.blur(input);
-        expect(input.getAttribute('placeholder')).toContain('Required');
     });
 
     it('validates required', function() {

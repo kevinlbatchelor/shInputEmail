@@ -4,14 +4,6 @@ import sh from 'sh-core';
 
 require('./sh-input-email.scss');
 
-let getPlaceholder = (required) => {
-    if (required) {
-        return 'Required Field';
-    } else {
-        return '+';
-    }
-};
-
 class ShInputEmail extends React.Component {
 
     constructor(props) {
@@ -20,7 +12,7 @@ class ShInputEmail extends React.Component {
             value: props.value || '',
             statusValid: false,
             statusTouched: false,
-            placeholder: getPlaceholder(props.required)
+            placeholder: '+'
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -79,7 +71,7 @@ class ShInputEmail extends React.Component {
 
     handleBlur() {
         this.setState({
-            placeholder: getPlaceholder(this.props.required),
+            placeholder: '+',
         });
 
         if (this.props.onBlur) {
@@ -165,10 +157,21 @@ class ShInputEmail extends React.Component {
             other: classNames,
         };
 
+        let requiredElement = null;
+        if (this.props.required) {
+            let requiredClasses = {
+                requiredLabel: true,
+                display: _.isEmpty(this.state.value)
+            };
+
+            requiredElement = <div className={sh.getClassNames(requiredClasses)}>required</div>;
+        }
+
         return (
             <div className={sh.getClassNames(classes)}>
                 <label>
                     <span className="label">{this.props.label}</span>
+                    {requiredElement}
                     <input ref="input"
                            className="sh-text-input"
                            type="text"
