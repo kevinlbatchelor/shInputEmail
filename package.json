@@ -1,6 +1,6 @@
 {
   "name": "sh-input-email",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Email input box superhero theme",
   "main": "bin/sh-input-email.js",
   "scripts": {
