@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import ShInputEmail from '../bin/sh-input-email';
 
-require('./app.scss');
+require('../node_modules/sh-core/bin/main.css');
 
 class App extends React.Component {
     constructor() {
@@ -42,10 +42,10 @@ class App extends React.Component {
             <div>
                 <div>State: {JSON.stringify(this.state)}</div>
                 <button onClick={this.action}>this.click</button>
-                <div style={{width: '300px'}}>
+                <div>
                     <ShInputEmail label="Input 1" value={this.state.value1} onChange={this.handleChange1} />
                 </div>
-                <div style={{width: '300px'}}>
+                <div>
                     <ShInputEmail label="Input 2" onChange={this.handleChange2} required />
                 </div>
             </div>
