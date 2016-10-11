@@ -20,7 +20,7 @@
     label {
         position: relative;
         display: block;
-        height: 25px;
+        height: 50px;
         width: 100%;
     }
 
@@ -60,7 +60,7 @@
         top: 0;
         left: 0;
         height: 100%;
-        width: calc(100% - 10px);
+        width: 100%;
         padding: 25px 5px 5px 5px;
 
         color: $color-font;

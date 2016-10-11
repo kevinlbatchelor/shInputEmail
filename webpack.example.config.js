@@ -12,10 +12,17 @@ module.exports = {
                 loaders: ['babel-loader']
             },
             {
-                test: /\.scss$/,
+                test: /\.html$/,
+                loader: "file?name=[name].[ext]",
+            },
+            {
+                test: /\.s?css$/,
                 loaders: ['style', 'css', 'sass']
-            }
+            },
+            {
+                test: /\.(ttf|eot|svg|jpg|png|woff)$/,
+                loader: "url-loader"
+            },
         ],
-
     }
 };
