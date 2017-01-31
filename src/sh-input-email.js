@@ -2,7 +2,7 @@ import React from 'react';
 import * as _ from 'lodash';
 import sh from 'sh-core';
 
-require('./sh-input-email.scss');
+import './sh-input-email.scss';
 
 class ShInputEmail extends React.Component {
 
@@ -80,16 +80,15 @@ class ShInputEmail extends React.Component {
     }
 
     isValidEmail(email = '') {
-        var step0 = (email || '').toString();
+        let step0 = (email || '').toString();
 
-        var step1 = step0.split('@');
+        let step1 = step0.split('@');
         if (_.compact(step1).length != 2) {
             return false;
         }
 
-        var step2 = step1[1].split('.');
-        //noinspection RedundantIfStatementJS
-        if (_.compact(step2).length != 2) {
+        let step2 = step1[1].split('.');
+        if (_.compact(step2).length < 2) {
             return false;
         }
 
